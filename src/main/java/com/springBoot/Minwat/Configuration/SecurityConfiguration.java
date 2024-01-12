@@ -53,7 +53,7 @@ public class SecurityConfiguration {
 	
 	@Bean
 	public SecurityFilterChain securityfilterchain(HttpSecurity httpsecurity) throws Exception{
-		httpsecurity.csrf((c)->c.disable()).authorizeHttpRequests((auth)->auth.requestMatchers("/auth/**").permitAll().requestMatchers("/info/**").authenticated())
+		httpsecurity.csrf((c)->c.disable()).authorizeHttpRequests((auth)->auth.requestMatchers("/auth/**").permitAll().requestMatchers("/ws/**").permitAll().requestMatchers("/app/**").permitAll().requestMatchers("/info/**").authenticated())
 		.exceptionHandling((ex)->ex.authenticationEntryPoint(point))
 		 .sessionManagement(session-> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 		
